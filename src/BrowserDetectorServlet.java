@@ -14,15 +14,15 @@ public class BrowserDetectorServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String userAgent = request.getHeader("User Agent");
+        String userAgent = request.getHeader("User-Agent");
         PrintWriter writer = response.getWriter();
         String browser = "Unknow browser";
-        if (userAgent.contains("Firefox")) {
+        if(userAgent.contains("Firefox")){
             browser = "Mozilla Firefox";
-        } else if (userAgent.contains("OPR")) {
+        } else if(userAgent.contains("OPR")){
             browser = "Opera";
-        } else if (userAgent.contains("Safari")) {
-            if (userAgent.contains("Chrome")) {
+        } else if(userAgent.contains("Safari")) {
+            if(userAgent.contains("Chrome")){
                 browser = "Google Chrome";
             } else {
                 browser = "Apple Safari";
@@ -31,8 +31,8 @@ public class BrowserDetectorServlet extends HttpServlet {
 
         writer.println("<html>");
         writer.println("<h1>Browser Detector</h1>");
-        writer.println("<h3>Your User Agent Is: " + userAgent + "</h3>");
-        writer.println("<h3>Your Browser Is: "+browser+"</h3>");
-        writer.println("<html>");
+        writer.println("<h3>Your User-Agent Is: " + userAgent + "</h3>");
+        writer.println("<h3>Your Browser Is: " + browser + "</h3>");
+        writer.println("</html>");
     }
 }
